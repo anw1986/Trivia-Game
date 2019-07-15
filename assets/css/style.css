@@ -1,0 +1,29 @@
+body{
+    background-color: #2EC4B6;
+    color: white;
+}
+
+.container{
+    border-radius: .80rem;
+    border: 10px solid #FFB302;
+    background-color: #004E64;
+}
+
+.jumbotron{
+    background-color: #2F97C1;
+    border: 5px solid #FFB302 !important;
+}
+
+#timer, #question{
+    border-radius: .80rem !important;
+    border: 5px solid #FFB302 !important;
+    background-color: #2F97C1 !important;
+}
+
+.card{
+    background-color: #2F97C1 !important;
+}
+
+.card:hover{
+    box-shadow:  0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+}
