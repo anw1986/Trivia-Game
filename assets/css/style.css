@@ -20,6 +20,15 @@ body{
     background-color: #2F97C1 !important;
 }
 
+#countdown{
+    font-size: 40px;
+}
+
+/* .countred{
+    color: red;
+    font-size: 40px;
+} */
+
 .card{
     background-color: #2F97C1 !important;
     border: 3px solid #FFB302 !important;
@@ -31,5 +40,10 @@ body{
 
 .fa-check{
     display: none ;
-    
+    font-size: 2em;
+    color: lawngreen;
+}
+
+.btn{
+    background-color: #FFB302;
 }
