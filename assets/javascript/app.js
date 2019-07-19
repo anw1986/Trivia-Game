@@ -9,6 +9,8 @@ var correctAnswer = 0;
 var wrongAnswer = 0;
 var notAnswered = 0;
 
+// Array with question  
+
 var questionObject = {
     list: [{
         questionIndex: 0,
@@ -33,7 +35,7 @@ var questionObject = {
         option2: "China",
         option3: "England",
         option4: "United States",
-        imageoption1: "./assets/images/russia-landmark.jpg",
+        imageoption1: "./assets/images/russia-landmark-2.jpg",
         imageoption2: "./assets/images/china-landmark.jpg",
         imageoption3: "./assets/images/england-landmark.jpg",
         imageoption4: "./assets/images/us-landmark.jpg",
@@ -100,24 +102,35 @@ var questionObject = {
 
 $(document).ready(function () {
 
+    // list the total number of question on the start page
+    $("#totalQuestion").html(questionObject.list.length)
+
+    // when the user clicks the start button
     $(".start").on("click", function () {
         $(".row").removeClass("d-none");
         $(".startscreen").addClass("d-none");
 
+        //question function is called 
         question();
 
     });
 
     function question() {
 
+        // adding class to our buttons/cards so that they can be selected
         $(".card").addClass("select")
 
+        // converting object into an array for easier data manipulation
         console.log("The count question index is: " + countquestion);
         questionArray = Object.values(questionObject.list[countquestion])
+
+        // the function countdown is called every 1s, this is a countdown timer
         a = setInterval(countdown, 1000)
         console.log("The interval ID is: " + a)
 
         $("#questionNumber").html("Question " + questionArray[1] + " of " + questionObject.list.length)
+
+        // using switch to populate the form
 
         switch (questionArray[0]) {
             case 0:
@@ -226,52 +239,47 @@ $(document).ready(function () {
                 $(".questionDisplay").html(questionArray[2]);
 
         }
-        countquestion++ 
+        countquestion++
     };
 
     function countdown() {
 
-        $("#countdown").html(count) 
-        // if(count<=10){
-        //     $("#countdown").css("color","red")
-        // }
-        if (count <= 0 ) {
-            // alert("time out")
+        // countdown timer
+        $("#countdown").html(count)
+        if (count <= 0) {
             // Display answer when time runs out
-
             $(".fontawesome-" + [questionArray[11]]).css({
                 "display": "inline-block"
             });
             clearInterval(a)
             console.log(a);
-            // count = 20;
-            // setTimeout(question, 3000)
+           
             setTimeout(transitionQuestion, 3000)
         }
         count--
     };
 
 
-
-
     $("body").on("click", ".select", function () {
-        
+
         clearInterval(a);
         var userChoice;
         userChoice = $(this).attr("value");
         console.log("user picked option: " + userChoice);
 
+        // removing class so as to avoid the user from pressing the option again
         $(".card").removeClass("select")
 
+        // comparing the user choice to the option selectied
         if (parseInt(userChoice) === questionArray[11]) {
-            // alert("correct answer")
+            
             $(this).find("i").css({
                 "display": "inline-block"
             });
             correctAnswer++
             console.log("Number of correct answer: " + correctAnswer)
         } else {
-            // alert("incorrect answer")
+           
             $(this).find("i").removeClass("fas fa-check").addClass("fas fa-times").css({
                 "font-size": "2em",
                 "color": "red",
@@ -292,16 +300,10 @@ $(document).ready(function () {
             showResult();
         }
 
-        // setTimeout(question, 3000)
-        // count = 20
-
     })
 
+    // This function is a set of routine to display spinners and/or hide rows when tranistioning from one question to another
     function transitionQuestion() {
-
-        // $(".fontawesome-" + [questionArray[11]]).css({
-        //     "display": "none"
-        // });
 
         $(".card").find("i").removeClass("fas fa-check").addClass("fas fa-spinner fa-spin").css({
             "font-size": "2em",
@@ -314,9 +316,9 @@ $(document).ready(function () {
         })
         $(".questionDisplay").html("")
         $("#questionSpinner").removeClass("d-none")
-        $(".card-img-top").attr("src","./assets/images/default.png")
+        $(".card-img-top").attr("src", "./assets/images/default.png")
         $(".card-title").addClass("d-none")
-       
+
         if (countquestion > 5) {
             clearInterval(a);
             showResult();
@@ -324,24 +326,27 @@ $(document).ready(function () {
         }
 
         setTimeout(transitionReset, 3000)
-        
+
     }
 
+    // This function is a set of routine so as to hide spinners and get the form ready to display next question
     function transitionReset() {
-        // alert("reset setting");
+        
         $(".card-title").removeClass("d-none")
         $("#questionSpinner").addClass("d-none");
         $(".card").find("i").removeClass("fas fa-spinner fa-spin").addClass("fas fa-check").css({
             "display": "none",
             "color": "lawngreen"
         })
-       
+
+        // restart counter and call the question function
         count = 20
         question()
     };
 
+    // function for routines to display the result screen
     function showResult() {
-        
+
         $(".row").addClass("d-none");
         $(".result").removeClass("d-none");
         $("#correctAnswer").html(" " + correctAnswer);
@@ -350,7 +355,30 @@ $(document).ready(function () {
         return
     }
 
-  
+    // reset button
+    $(".restart").on("click", function () {
+        masterReset()
+    })
+
+    // hard reset when the reset button is pressed
+    function masterReset() {
+        count = 20
+        countquestion = 0
+        correctAnswer = 0
+        wrongAnswer = 0
+        notAnswered = 0
+        questionArray = []
+        $(".result").addClass("d-none")
+        $(".row").removeClass("d-none")
+        $(".card-title").removeClass("d-none")
+        $("#questionSpinner").addClass("d-none");
+        $(".card").find("i").removeClass("fas fa-spinner fa-spin").addClass("fas fa-check").css({
+            "display": "none",
+            "color": "lawngreen"
+        })
+        question();
+    }
+
 });
 
 
