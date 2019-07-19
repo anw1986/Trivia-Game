@@ -7,16 +7,16 @@ Welcome to the Trivia about countries. There are a total of 6 questions & each q
 This is a trivia game about countries. Each question presented has four options. The selects an answer or wait for the timer to run out until the next question is diplayed. After the last question a result screen pops up
 
 Screen shot of the home screen
-![trivia](./assets/images/home-screen-jpg)
+![trivia](./assets/images/home-screen.jpg)
 
 Screen shot of the question screen
-![trivia](./assets/images/question-screen-jpg)
+![trivia](./assets/images/question-screen.jpg)
 
 Screen shot of the transition screen
-![trivia](./assets/images/transition-screen-jpg)
+![trivia](./assets/images/transition-screen.jpg)
 
 Screen shot of the result screen
-![trivia](./assets/images/result-screen-jpg)
+![trivia](./assets/images/result-screen.jpg)
 
 ## Game Design Notes & User Tests
 
