@@ -295,10 +295,10 @@ $(document).ready(function () {
         // display spinner after 3 seconds
         setTimeout(transitionQuestion, 3000)
 
-        if (countquestion > 5) {
-            clearInterval(a);
-            showResult();
-        }
+        // if (countquestion > 5) {
+        //     clearInterval(a);
+        //     showResult();
+        // }
 
     })
 
