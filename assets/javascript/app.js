@@ -295,11 +295,6 @@ $(document).ready(function () {
         // display spinner after 3 seconds
         setTimeout(transitionQuestion, 3000)
 
-        // if (countquestion > 5) {
-        //     clearInterval(a);
-        //     showResult();
-        // }
-
     })
 
     // This function is a set of routine to display spinners and/or hide rows when tranistioning from one question to another
